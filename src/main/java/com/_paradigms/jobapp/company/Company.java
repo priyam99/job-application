@@ -1,22 +1,24 @@
 package com._paradigms.jobapp.company;
 
 import com._paradigms.jobapp.job.Job;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.List;
 
 @Entity
 public class Company {
-    // Company has one-to-many relation with the jobs
-    // One company can have multiple jobs
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private String description;
 
-    @OneToMany
-    private List<Job> jobs; // List of jobs for the company
+    @JsonIgnore
+    @OneToMany(mappedBy = "company")
+    private List<Job> jobs;
+
+    // private List<Review> reviews;
 
     public Company() {
     }

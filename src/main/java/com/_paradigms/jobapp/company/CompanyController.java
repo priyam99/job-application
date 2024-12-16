@@ -4,6 +4,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+
 import java.util.List;
 
 @RestController
@@ -16,8 +17,9 @@ public class CompanyController {
     }
 
     @GetMapping
-    public List<Company> getAllCompanies(){
-        return companyService.getAllCompanies();
+    public ResponseEntity<List<Company>> getAllCompanies(){
+        return new ResponseEntity<>(companyService.getAllCompanies(),
+                HttpStatus.OK);
     }
 
     @PutMapping("/{id}")
@@ -35,19 +37,3 @@ public class CompanyController {
                 HttpStatus.CREATED);
     }
 }
-/*
-Companies
-GET /companies
-PUT /companies/{id}
-POST /companies
-DELETE /companies/{id}
-GET /companies/{id}
-
-Reviews
-GET /companies/{companyId}/reviews
-POST /companies/{companyId}/reviews
-GET /companies/{companyId}/reviews/{reviewId}
-PUT /companies/{companyId}/reviews/{reviewId}
-DELETE /companies/{companyId}/reviews/{reviewId}
-
- */
