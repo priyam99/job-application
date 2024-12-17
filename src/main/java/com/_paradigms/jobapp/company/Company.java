@@ -23,6 +23,7 @@ public class Company {
      private List<Review> reviews;
 
     public Company() {
+        int priyam;
     }
 
     public List<Review> getReviews() {
